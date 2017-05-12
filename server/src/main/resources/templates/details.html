@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>HTTP/2 Performance Evaluation and Visualization</title>
+    <link rel="stylesheet" href="css//bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/keen-dashboards.css"/>
+    <link rel="stylesheet" href="css/dc.css"/>
+    <link rel="stylesheet" href="css/d3.parcoords.css"/>
+    <link rel="stylesheet" href="css/bootstrap-dialog.min.css"/>
+    <link rel="stylesheet" href="custom.css"/>
+    <!--<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"/>-->
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">HTTP/2 Performance Benchmark</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/test">Overview</a></li>
+                    <li class="active"><a href="/test2">Details</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Spinning dialog -->
+    <div id="spinner" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+         aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        Please Wait for Analysis Complete!
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-info progress-bar-striped active" style="width: 100%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="container">
+        <div class="row">
+            <div id="alertDiv" class="col-sm-12 alert alert-success" role="alert">
+                <button id="closeAlert" class="close" type="button"></button>
+                <p>Query experimental result complete!</p>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <form role="form">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label for="scenario">Scenario:</label>
+                        <form id="scenarioForm" class="form-inline">
+                            <div class="form-group">
+                                <select class="form-control" id="scenario">
+                                    <option>Loss rate 0%</option>
+                                    <option>Loss rate 1.0%</option>
+                                    <option>Loss rate 1.5%</option>
+                                    <option>Round trip time 20ms</option>
+                                    <option>Round trip time 100ms</option>
+                                    <option>Round trip time 200ms</option>
+                                    <option>Bandwidth 10mbit</option>
+                                    <option>Bandwidth 1mbit</option>
+                                </select>
+                                <select class="form-control" id="subject">
+                                    <option>Object number 4</option>
+                                    <option>Object number 8</option>
+                                    <option>Object number 16</option>
+                                    <option>Object number 32</option>
+                                    <option>Object size 300KB</option>
+                                    <option>Object size 600KB</option>
+                                    <option>Object size 1.2MB</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-1 text-center">
+                        <button id="queryBtn" type="button" data-toggle="tooltip" title="Query and visualize experimental result"
+                                class="btn btn-success">Query</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <hr class="divider"/>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        Cumulative Distribution
+                    </div>
+                    <div class="chart-stage">
+                        <div id="cdfChart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="divider"/>
+
+        <div class="col-sm-12">
+            <table id="grid-basic" class="table table-condensed table-hover table-striped">
+                <thead>
+                <tr>
+                    <th data-column-id="id">ID</th>
+                    <th data-column-id="elapse">Time elapse</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.bootgrid.min.js"></script>
+    <script src="js/d3.js"></script>
+    <script src="js/crossfilter.js"></script>
+    <script src="js/dc.js"></script>
+    <script src="js/queue.js"></script>
+    <script src="js/keen.min.js"></script>
+    <script src="js/gaussian.js"></script>
+    <script src="js/arr-stat.js"></script>
+    <script src="js/bootstrap-dialog.min.js"></script>
+    <script src="details.js"></script>
+</body>
+</html>

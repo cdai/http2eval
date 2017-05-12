@@ -1,0 +1,64 @@
+group 'com.cdai.codebase'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
+
+configurations {
+    javaAgent { description "additional lib as jvm agent" }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'application'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile(project(":report"))
+
+    // Jetty Client
+    compile("org.eclipse.jetty:jetty-alpn-client:9.4.0.v20161208")
+    compile("org.eclipse.jetty.http2:http2-http-client-transport:9.4.0.v20161208")
+
+    // ALPN
+    compile("org.mortbay.jetty.alpn:jetty-alpn-agent:2.0.6")
+    javaAgent("org.mortbay.jetty.alpn:jetty-alpn-agent:2.0.6")
+
+    compile("org.jsoup:jsoup:1.10.2")
+}
+
+distributions {
+    main.contents {
+        from(configurations.javaAgent) {
+            into "lib"
+        }
+    }
+}
+
+defaultTasks 'run'
+mainClassName = 'com.cdai.codebase.Tester'
+applicationDefaultJvmArgs = ["-javaagent:lib/jetty-alpn-agent-2.0.6.jar", "-Dorg.eclipse.jetty.io.LEVEL=ERROR"]
+
+task copyAlpnAgentJar (type: Copy) {
+    from (configurations.javaAgent)
+    into("lib")
+}
+
+run {
+    if (project.hasProperty("myargs")) {
+        args Eval.me(myargs)
+    }
+}
+
+tasks["eclipse"].dependsOn(copyAlpnAgentJar)
+processResources.dependsOn copyAlpnAgentJar

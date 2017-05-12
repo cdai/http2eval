@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id="client:test" external.linked.project.path="$MODULE_DIR$/../../client" external.root.project.path="$MODULE_DIR$/../../client" external.system.id="GRADLE" external.system.module.group="com.cdai.codebase" external.system.module.type="sourceSet" external.system.module.version="1.0-SNAPSHOT" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+    <output-test url="file://$MODULE_DIR$/../../client/build/classes/test" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../client/src/test">
+      <sourceFolder url="file://$MODULE_DIR$/../../client/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../client/src/test/resources" type="java-test-resource" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="client_main" />
+    <orderEntry type="module" module-name="report_main" />
+    <orderEntry type="library" name="Gradle: org.eclipse.jetty:jetty-alpn-client:9.4.0.v20161208" level="project" />
+    <orderEntry type="library" name="Gradle: org.eclipse.jetty.http2:http2-http-client-transport:9.4.0.v20161208" level="project" />
+    <orderEntry type="library" name="Gradle: org.mortbay.jetty.alpn:jetty-alpn-agent:2.0.6" level="project" />
+    <orderEntry type="library" name="Gradle: org.jsoup:jsoup:1.10.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.eclipse.jetty:jetty-io:9.4.0.v20161208" level="project" />
+    <orderEntry type="library" name="Gradle: org.eclipse.jetty:jetty-client:9.4.0.v20161208" level="project" />
+    <orderEntry type="library" name="Gradle: org.eclipse.jetty.http2:http2-client:9.4.0.v20161208" level="project" />
+    <orderEntry type="library" name="Gradle: org.eclipse.jetty:jetty-util:9.4.0.v20161208" level="project" />
+    <orderEntry type="library" name="Gradle: org.eclipse.jetty:jetty-http:9.4.0.v20161208" level="project" />
+    <orderEntry type="library" name="Gradle: org.eclipse.jetty.http2:http2-common:9.4.0.v20161208" level="project" />
+    <orderEntry type="library" name="Gradle: org.eclipse.jetty.http2:http2-hpack:9.4.0.v20161208" level="project" />
+  </component>
+  <component name="TestModuleProperties" production-module="client_main" />
+</module>

@@ -1,0 +1,3 @@
+rootProject.name = 'client'
+include ':report'
+project(':report').projectDir = new File(settingsDir, '../report')
